@@ -57,6 +57,16 @@ public class MenuBuilder {
 
     }
 
+    private static BankingTransaction CreateTransactionForm() {
+
+        System.out.println("Transaction form goes here");
+
+        BankingTransactionLodge btl = new BankingTransactionLodge();
+
+        return btl;
+    }
+
+
     private static  void DeleteCustomer() {
 
 
@@ -71,7 +81,7 @@ public class MenuBuilder {
         System.out.println("-------------------------\n");
         System.out.println("1 - Add Customer");
         System.out.println("2 - Delete Customer");
-        System.out.println("3 - bankingMenuOption 3");
+        System.out.println("3 - Create Transaction");
         System.out.println("4 - Quit");
 
         selection = input.nextInt();
@@ -109,11 +119,25 @@ public class MenuBuilder {
 
                     int bankEmployeeAction = MenuBuilder.bankingMenu();
 
-                    // Write a switch statement here
-                    // Here I demo creating a customer as if I used a switch
-                    Customer newCustomer = AddCustomerForm(); // this calls the form, which then creates the custsomer
-                    // validdate the newCustomer
-                    BankingAction.AddCustomer(newCustomer);
+
+                    switch (bankEmployeeAction) {
+
+                        case 1:
+                            Customer newCustomer = AddCustomerForm();
+                            BankingAction.AddCustomer(newCustomer);
+                            break;
+                        case 2: break;
+                        case 3:
+                            BankingTransaction btl = CreateTransactionForm();
+                            BankingAction.CreateTransaction(btl);
+                            break;
+
+
+                    }
+
+
+
+
 
 
                 } else {

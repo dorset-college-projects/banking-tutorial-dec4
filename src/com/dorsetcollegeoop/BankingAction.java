@@ -17,8 +17,8 @@ public class BankingAction {
 
     }
 
-    public static void CreateTransaction() {
-
+    public static void CreateTransaction(BankingTransaction transaction) {
+        System.out.println("Creating Transaction......");
     }
 
     public static void ListCustomers() {
