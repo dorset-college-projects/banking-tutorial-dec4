@@ -57,11 +57,36 @@ public class MenuBuilder {
 
     }
 
-    private static BankingTransaction CreateTransactionForm() {
 
-        System.out.println("Transaction form goes here");
+    private static int transactionMenu() {
+
+        int selection;
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("-------------------------\n");
+        System.out.println("1 - Lodge Money");
+        System.out.println("2 - Withdraw Money");
+
+
+        selection = input.nextInt();
+        return selection;
+
+    }
+
+    private static BankingTransaction CreateTransactionLodgeForm() {
+
+        System.out.println("Transaction lodge form goes here");
 
         BankingTransactionLodge btl = new BankingTransactionLodge();
+
+        return btl;
+    }
+
+    private static BankingTransaction CreateTransactionWithdrawForm() {
+
+        System.out.println("Transaction widthraw form goes here");
+
+        BankingTransactionWithdraw btl = new BankingTransactionWithdraw();
 
         return btl;
     }
@@ -127,9 +152,27 @@ public class MenuBuilder {
                             BankingAction.AddCustomer(newCustomer);
                             break;
                         case 2: break;
-                        case 3:
-                            BankingTransaction btl = CreateTransactionForm();
-                            BankingAction.CreateTransaction(btl);
+                        case AppConstants.TRANSACTION_CREATE:
+                            int transactionChoice = MenuBuilder.transactionMenu();
+
+                            switch(transactionChoice) {
+                                case AppConstants.TRANSACTION_LODGE:
+
+                                    BankingTransaction btl = CreateTransactionLodgeForm();
+                                    BankingAction.CreateTransaction(btl);
+
+                                    break;
+                                case AppConstants.TRANSACTION_WITHDRAW:
+                                    BankingTransaction btw = CreateTransactionWithdrawForm();
+                                    BankingAction.CreateTransaction(btw);
+
+                                    break;
+
+                            }
+
+
+
+
                             break;
 
 
