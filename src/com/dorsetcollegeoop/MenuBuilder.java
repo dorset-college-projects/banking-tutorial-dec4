@@ -2,6 +2,8 @@ package com.dorsetcollegeoop;
 
 import java.util.Scanner;
 
+import static com.dorsetcollegeoop.AppConstants.CUSTOMER_CREATE;
+
 public class MenuBuilder {
 
     private static int startMenu() {
@@ -107,7 +109,8 @@ public class MenuBuilder {
         System.out.println("1 - Add Customer");
         System.out.println("2 - Delete Customer");
         System.out.println("3 - Create Transaction");
-        System.out.println("4 - Quit");
+        System.out.println("4 - List Customers");
+        System.out.println("5 - Quit");
 
         selection = input.nextInt();
         return selection;
@@ -147,10 +150,11 @@ public class MenuBuilder {
 
                     switch (bankEmployeeAction) {
 
-                        case 1:
+                        case AppConstants.CUSTOMER_CREATE:
                             Customer newCustomer = AddCustomerForm();
                             BankingAction.AddCustomer(newCustomer);
                             break;
+
                         case 2: break;
                         case AppConstants.TRANSACTION_CREATE:
                             int transactionChoice = MenuBuilder.transactionMenu();
@@ -175,6 +179,11 @@ public class MenuBuilder {
 
                             break;
 
+                        case AppConstants.CUSTOMER_LIST:
+                            System.out.println("Listing customers");
+                            FileManager.ListCustomers();
+                            break; // AppConstants.CUSTOMER_LIST
+
 
                     }
 
@@ -184,7 +193,7 @@ public class MenuBuilder {
 
 
                 } else {
-                    System.out.println("error....");
+                    System.out.println("Authenicationn error....");
                     return;
                 }
 
